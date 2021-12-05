@@ -1,7 +1,4 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Node.js CI
+name: Testing And Deploying
 
 on:
   push:
@@ -16,29 +13,28 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        
-    - uses: borales/actions-yarn@v2.3.0
-      with:
-        cmd: install # will run `yarn install` command
-        
-    - name: Run the tests
-    - run: yarn test
-    
-    - name: Build the app
-    - run: yarn build
-    
-    - name: Install Surge
-      run: npm install --global surge
-      
-    - name: Deploy to Surge
-      run: surge ./build https://project-7b-microtimerapp.surge.sh --token ${{ secrets.SURGE_SECRET }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run the tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Install Surge
+        run: npm install --global surge
+
+      - name: Deploy to Surge
+        run: surge ./build https://project-7b-microtimerapp.surge.sh --token ${{ secrets.SURGE_SECRET }}
