@@ -1,10 +1,24 @@
 import React from 'react';
+import Timer from "./components/Timer";
+import './App.css';
 
 function App() {
     return (
-        <div>
-            Timer App
-        </div>
+        <section>
+            <div className={'color'}/>
+            <div className={'color'}/>
+            <div className={'color'}/>
+            <div className={'box'}>
+                <div className={'square'}/>
+                <div className={'square'}/>
+                <div className={'square'}/>
+                <div className={'square'}/>
+                <div className={'square'}/>
+                <div className={'container'}>
+                    <Timer/>
+                </div>
+            </div>
+        </section>
     );
 }
 

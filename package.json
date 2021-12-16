@@ -13,6 +13,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "react-timer-hook": "^3.0.5",
     "typescript": "^4.1.2",
     "web-vitals": "^2.1.2"
   },
@@ -20,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:coverage": "react-scripts test --coverage --runInBand --watchAll=false",
+    "isready": "npm run format && npm run lint && npm run test:coverage && npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +48,7 @@
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",
+    "react-test-renderer": "^17.0.2",
     "ts-jest": "^27.1.0"
   },
   "jest": {
