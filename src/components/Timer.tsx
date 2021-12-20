@@ -8,12 +8,11 @@ function Timer() {
     const {
         seconds,
         minutes,
-        // isRunning,
+        isRunning,
         start,
         pause,
         reset,
     } = useStopwatch({autoStart: false});
-
     return (
         <div className={'form'}>
             <Heading/>
@@ -27,6 +26,8 @@ function Timer() {
                     resetTimer={reset}
                 />
             </div>
+            {/*the following element is just used for testing purposes:*/}
+            <input type="checkbox" role={'isRunning'} checked={isRunning} style={{display:"none"}}/>
         </div>
     );
 }
