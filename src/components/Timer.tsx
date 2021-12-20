@@ -27,7 +27,7 @@ function Timer() {
                 />
             </div>
             {/*the following element is just used for testing purposes:*/}
-            <input type="checkbox" role={'isRunning'} checked={isRunning} style={{display:"none"}}/>
+            <input type="checkbox" title={'isRunning'} checked={isRunning} style={{display:"none"}}/>
         </div>
     );
 }

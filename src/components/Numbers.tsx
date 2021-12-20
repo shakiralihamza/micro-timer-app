@@ -6,13 +6,13 @@ interface NumbersProps {
 }
 const Numbers:React.FC<NumbersProps> = ({minutes,seconds}) => (
     <>
-        <div className={'minutes'} role={'minutes'}>
+        <div className={'minutes'}>
             {minutes.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}
         </div>
         <div className={'colon'}>
             :
         </div>
-        <div className={'seconds'} role={'seconds'}>
+        <div className={'seconds'} title={'seconds'}>
             {seconds.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}
         </div>
     </>

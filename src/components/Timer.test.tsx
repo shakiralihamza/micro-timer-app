@@ -20,33 +20,37 @@ describe("Timer", () => {
 
     it('timer should not be running when the app loads', function () {
         render(<Timer/>);
-        expect(screen.getByRole('isRunning', {hidden: true})).not.toBeChecked();
+        // @ts-ignore
+        expect(screen.getByTitle('isRunning', {hidden: true})).not.toBeChecked();
     });
 
     it('Clicking on start button should start the timer', function () {
         render(<Timer/>);
         const button = screen.getByRole('button', {name: /start/i})
         fireEvent.click(button);
-        expect(screen.getByRole('isRunning', {hidden: true})).toBeChecked();
+        // @ts-ignore
+        expect(screen.getByTitle('isRunning', {hidden: true})).toBeChecked();
     });
 
     it('Clicking on pause button should stop/pause the timer', function () {
         render(<Timer/>);
         const button = screen.getByRole('button', {name: /pause/i})
         fireEvent.click(button);
-        expect(screen.getByRole('isRunning', {hidden: true})).not.toBeChecked();
+        // @ts-ignore
+        expect(screen.getByTitle('isRunning', {hidden: true})).not.toBeChecked();
     });
 
     it('Clicking on reset button should stop/pause the timer', function () {
         render(<Timer/>);
         const button = screen.getByRole('button', {name: /reset/i})
         fireEvent.click(button);
-        expect(screen.getByRole('isRunning', {hidden: true})).not.toBeChecked();
+        // @ts-ignore
+        expect(screen.getByTitle('isRunning', {hidden: true})).not.toBeChecked();
     });
 
     it('the timer value should be zero when app loads', function () {
         render(<Timer/>);
-        let seconds = screen.getByRole('seconds');
+        let seconds = screen.getByTitle('seconds');
         expect(seconds).toHaveTextContent(/00/i)
     });
 
@@ -55,7 +59,7 @@ describe("Timer", () => {
         jest.useFakeTimers();
         const button = screen.getByRole('button', {name: /start/i})
         fireEvent.click(button);
-        let seconds = screen.getByRole('seconds');
+        let seconds = screen.getByTitle('seconds');
         jest.advanceTimersByTime(1000);
         expect(seconds).toHaveTextContent(/01/i)
     });
